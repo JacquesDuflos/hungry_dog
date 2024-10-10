@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://o8t6vawdcg88"]
+
+[ext_resource type="Texture2D" uid="uid://brd6o2klvhpaa" path="res://Images/table.png" id="1_stpsa"]
+[ext_resource type="Script" path="res://Scripts/table.gd" id="2_iu42b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bt0qi"]
+size = Vector2(92, 29)
+
+[node name="Table" type="Sprite2D"]
+position = Vector2(-1, 3)
+texture = ExtResource("1_stpsa")
+script = ExtResource("2_iu42b")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 25.5)
+shape = SubResource("RectangleShape2D_bt0qi")

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cy2gol3q757nr"]
+
+[ext_resource type="Texture2D" uid="uid://1in4oefa4do6" path="res://Images/chicharron.png" id="1_318wh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_d3pgx"]
+
+[node name="Chicharron" type="Area2D" groups=["pickable"]]
+
+[node name="Chicharron" type="Sprite2D" parent="."]
+texture = ExtResource("1_318wh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_d3pgx")

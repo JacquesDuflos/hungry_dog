@@ -1,0 +1,76 @@
+[gd_scene load_steps=8 format=3 uid="uid://cn6lfnkwl4p4r"]
+
+[ext_resource type="Texture2D" uid="uid://uo1f6v4b6h5" path="res://Images/background.png" id="1_c1noa"]
+[ext_resource type="PackedScene" uid="uid://o8t6vawdcg88" path="res://Scenes/table.tscn" id="2_mpdvt"]
+[ext_resource type="PackedScene" uid="uid://cy2gol3q757nr" path="res://Scenes/chicharron.tscn" id="3_mlld0"]
+[ext_resource type="Texture2D" uid="uid://bcly1liqjfhib" path="res://Images/dog.png" id="4_ellan"]
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="4_eohm6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dqxcu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bnrbf"]
+radius = 31.1448
+
+[node name="World" type="Node2D"]
+position = Vector2(576, 324)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="Background" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(-1, -1)
+texture = ExtResource("1_c1noa")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+visible = false
+build_mode = 1
+polygon = PackedVector2Array(-507, -293, -434, -293, -389, -218, -231, -283, 152, -296, 220, -267, 314, -302, 511, -271, 546, 282, 150.422, 286.811, 85, 236, 29.817, 288.277, -523, 295, -485, 49, -526, -70, -491, -275)
+
+[node name="Table" parent="." instance=ExtResource("2_mpdvt")]
+
+[node name="Chicharron" parent="." instance=ExtResource("3_mlld0")]
+position = Vector2(-196, -8)
+
+[node name="Chicharron2" parent="." instance=ExtResource("3_mlld0")]
+position = Vector2(-309, 85)
+
+[node name="Chicharron3" parent="." instance=ExtResource("3_mlld0")]
+position = Vector2(186, 139)
+
+[node name="Chicharron4" parent="." instance=ExtResource("3_mlld0")]
+position = Vector2(20, -97)
+
+[node name="Chicharron5" parent="." instance=ExtResource("3_mlld0")]
+position = Vector2(194, 7)
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(-270, -82)
+script = ExtResource("4_eohm6")
+
+[node name="Dog" type="Sprite2D" parent="CharacterBody2D"]
+position = Vector2(-2, -2)
+texture = ExtResource("4_ellan")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("CircleShape2D_dqxcu")
+
+[node name="Eatbox" type="Area2D" parent="CharacterBody2D"]
+position = Vector2(2, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Eatbox"]
+position = Vector2(-7, -2)
+shape = SubResource("CircleShape2D_bnrbf")
+
+[node name="Table2" parent="." instance=ExtResource("2_mpdvt")]
+position = Vector2(-171, 130)
+
+[node name="Table3" parent="." instance=ExtResource("2_mpdvt")]
+position = Vector2(315, 112)
+
+[node name="Button" type="Button" parent="."]
+offset_left = -472.0
+offset_top = -284.0
+offset_right = -267.0
+offset_bottom = -186.0
+text = "RESET"
+
+[connection signal="pressed" from="Button" to="CharacterBody2D" method="_on_button_pressed"]
